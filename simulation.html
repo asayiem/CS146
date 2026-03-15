@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Babbio Parking Garage live simulation — click any spot to toggle its availability across all 5 levels." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Babbio Parking Garage live simulation — click any spot to toggle its availability across all 5 levels.">
   <title>Simulation | Babbio Parking Simulator</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/simulation.css" />
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/simulation.css">
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
- 
   <nav class="navbar" aria-label="Main navigation">
     <div class="navbar__inner">
       <a href="index.html" class="navbar__brand" aria-label="Babbio Parking Simulator Home">
@@ -21,22 +20,19 @@
         </div>
         <span class="navbar__brand-name">Babbio Parking</span>
       </a>
-      <ul class="navbar__links" role="list">
+      <ul class="navbar__links">
         <li><a href="index.html">Home</a></li>
         <li><a href="simulation.html" class="active" aria-current="page">Simulation</a></li>
         <li><a href="alerts.html">Alerts</a></li>
-       
       </ul>
     </div>
   </nav>
 
- 
   <div class="control-bar" role="region" aria-label="Simulation controls">
     <div class="control-bar__inner">
-
       <p class="control-bar__title">Live Simulation</p>
 
-      <div class="control-bar__stats" aria-label="Spot totals">
+      <section class="control-bar__stats" aria-label="Spot totals">
         <div class="control-stat">
           <span class="control-stat__dot dot-green" aria-hidden="true"></span>
           <span>Available:</span>
@@ -52,9 +48,9 @@
           <span>Leaving Soon:</span>
           <span class="control-stat__num">6</span>
         </div>
-      </div>
+      </section>
 
-      <div class="legend" aria-label="Spot color legend">
+      <section class="legend" aria-label="Spot color legend">
         <div class="legend__item">
           <span class="legend__swatch swatch-available" aria-hidden="true"></span>
           Available
@@ -67,723 +63,324 @@
           <span class="legend__swatch swatch-leaving" aria-hidden="true"></span>
           Leaving Soon
         </div>
-      </div>
+      </section>
 
       <div class="control-bar__actions">
         <a href="simulation.html" class="btn btn-secondary" title="Reload page to reset all spots to default state">Reset</a>
       </div>
-
     </div>
   </div>
 
   <main id="main-content">
     <div class="sim-layout">
 
-      <!-- ══════════════════════════════════════════════════════
-           LEVEL 1 
-      ═══════════════════════════════════════════════════════ -->
       <section class="level-card" id="level-1" aria-labelledby="level-1-title">
         <div class="level-card__header">
-          <h2 class="level-card__title" id="level-1-title">
-            Level 1 <span>— Babbio Garage Ground Floor</span>
-          </h2>
+          <h2 class="level-card__title" id="level-1-title">Level 1 <span>— Ground Floor</span></h2>
           <div class="level-card__meta">
             <span class="badge badge-green">Open</span>
             <span class="badge badge-gray">14 / 20 available</span>
           </div>
         </div>
-
         <div class="level-card__body">
           <div class="spot-grid" role="group" aria-label="Level 1 parking spots">
-
-            <!-- A01 available -->
-            <input type="checkbox" id="spot-a01" class="spot-toggle" />
-            <label for="spot-a01" class="spot">
-              <span class="spot__id">A01</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A01 · Click to toggle</span>
-            </label>
-
-            <!-- A02 available -->
-            <input type="checkbox" id="spot-a02" class="spot-toggle" />
-            <label for="spot-a02" class="spot">
-              <span class="spot__id">A02</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A02 · Click to toggle</span>
-            </label>
-
-            <!-- A03 leaving soon -->
-            <input type="checkbox" id="spot-a03" class="spot-toggle spot-toggle--leaving" />
-            <label for="spot-a03" class="spot">
-              <span class="spot__id">A03</span>
-              <span class="spot__status">Leaving</span>
-              <span class="spot__tip">Level 1 · A03 · Leaving Soon</span>
-            </label>
-
-            <!-- A04 available -->
-            <input type="checkbox" id="spot-a04" class="spot-toggle" />
-            <label for="spot-a04" class="spot">
-              <span class="spot__id">A04</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A04 · Click to toggle</span>
-            </label>
-
-            <!-- A05 available -->
-            <input type="checkbox" id="spot-a05" class="spot-toggle" />
-            <label for="spot-a05" class="spot">
-              <span class="spot__id">A05</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A05 · Click to toggle</span>
-            </label>
-
-            <!-- A06 occupied -->
-            <input type="checkbox" id="spot-a06" class="spot-toggle" checked />
-            <label for="spot-a06" class="spot">
-              <span class="spot__id">A06</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 1 · A06 · Click to toggle</span>
-            </label>
-
-            <!-- A07 occupied -->
-            <input type="checkbox" id="spot-a07" class="spot-toggle" checked />
-            <label for="spot-a07" class="spot">
-              <span class="spot__id">A07</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 1 · A07 · Click to toggle</span>
-            </label>
-
-            <!-- A08 available -->
-            <input type="checkbox" id="spot-a08" class="spot-toggle" />
-            <label for="spot-a08" class="spot">
-              <span class="spot__id">A08</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A08 · Click to toggle</span>
-            </label>
-
-            <!-- A09 available -->
-            <input type="checkbox" id="spot-a09" class="spot-toggle" />
-            <label for="spot-a09" class="spot">
-              <span class="spot__id">A09</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A09 · Click to toggle</span>
-            </label>
-
-            <!-- A10 available -->
-            <input type="checkbox" id="spot-a10" class="spot-toggle" />
-            <label for="spot-a10" class="spot">
-              <span class="spot__id">A10</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A10 · Click to toggle</span>
-            </label>
-
-            <!-- A11 occupied -->
-            <input type="checkbox" id="spot-a11" class="spot-toggle" checked />
-            <label for="spot-a11" class="spot">
-              <span class="spot__id">A11</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 1 · A11 · Click to toggle</span>
-            </label>
-
-            <!-- A12 available -->
-            <input type="checkbox" id="spot-a12" class="spot-toggle" />
-            <label for="spot-a12" class="spot">
-              <span class="spot__id">A12</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A12 · Click to toggle</span>
-            </label>
-
-            <!-- A13 available -->
-            <input type="checkbox" id="spot-a13" class="spot-toggle" />
-            <label for="spot-a13" class="spot">
-              <span class="spot__id">A13</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A13 · Click to toggle</span>
-            </label>
-
-            <!-- A14 available -->
-            <input type="checkbox" id="spot-a14" class="spot-toggle" />
-            <label for="spot-a14" class="spot">
-              <span class="spot__id">A14</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A14 · Click to toggle</span>
-            </label>
-
-            <!-- A15 occupied -->
-            <input type="checkbox" id="spot-a15" class="spot-toggle" checked />
-            <label for="spot-a15" class="spot">
-              <span class="spot__id">A15</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 1 · A15 · Click to toggle</span>
-            </label>
-
-            <!-- A16 available -->
-            <input type="checkbox" id="spot-a16" class="spot-toggle" />
-            <label for="spot-a16" class="spot">
-              <span class="spot__id">A16</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A16 · Click to toggle</span>
-            </label>
-
-            <!-- A17 leaving soon -->
-            <input type="checkbox" id="spot-a17" class="spot-toggle spot-toggle--leaving" />
-            <label for="spot-a17" class="spot">
-              <span class="spot__id">A17</span>
-              <span class="spot__status">Leaving</span>
-              <span class="spot__tip">Level 1 · A17 · Leaving Soon</span>
-            </label>
-
-            <!-- A18 available -->
-            <input type="checkbox" id="spot-a18" class="spot-toggle" />
-            <label for="spot-a18" class="spot">
-              <span class="spot__id">A18</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A18 · Click to toggle</span>
-            </label>
-
-            <!-- A19 available -->
-            <input type="checkbox" id="spot-a19" class="spot-toggle" />
-            <label for="spot-a19" class="spot">
-              <span class="spot__id">A19</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A19 · Click to toggle</span>
-            </label>
-
-            <!-- A20 available -->
-            <input type="checkbox" id="spot-a20" class="spot-toggle" />
-            <label for="spot-a20" class="spot">
-              <span class="spot__id">A20</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 1 · A20 · Click to toggle</span>
-            </label>
-
+            <input type="checkbox" id="spot-a01" class="spot-toggle">
+            <label for="spot-a01" class="spot"><span class="spot__id">A01</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a02" class="spot-toggle">
+            <label for="spot-a02" class="spot"><span class="spot__id">A02</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a03" class="spot-toggle spot-toggle--leaving">
+            <label for="spot-a03" class="spot"><span class="spot__id">A03</span><span class="spot__status">Leaving</span></label>
+            <input type="checkbox" id="spot-a04" class="spot-toggle">
+            <label for="spot-a04" class="spot"><span class="spot__id">A04</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a05" class="spot-toggle">
+            <label for="spot-a05" class="spot"><span class="spot__id">A05</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a06" class="spot-toggle" checked>
+            <label for="spot-a06" class="spot"><span class="spot__id">A06</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-a07" class="spot-toggle" checked>
+            <label for="spot-a07" class="spot"><span class="spot__id">A07</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-a08" class="spot-toggle">
+            <label for="spot-a08" class="spot"><span class="spot__id">A08</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a09" class="spot-toggle">
+            <label for="spot-a09" class="spot"><span class="spot__id">A09</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a10" class="spot-toggle">
+            <label for="spot-a10" class="spot"><span class="spot__id">A10</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a11" class="spot-toggle" checked>
+            <label for="spot-a11" class="spot"><span class="spot__id">A11</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-a12" class="spot-toggle">
+            <label for="spot-a12" class="spot"><span class="spot__id">A12</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a13" class="spot-toggle">
+            <label for="spot-a13" class="spot"><span class="spot__id">A13</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a14" class="spot-toggle">
+            <label for="spot-a14" class="spot"><span class="spot__id">A14</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a15" class="spot-toggle" checked>
+            <label for="spot-a15" class="spot"><span class="spot__id">A15</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-a16" class="spot-toggle">
+            <label for="spot-a16" class="spot"><span class="spot__id">A16</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a17" class="spot-toggle spot-toggle--leaving">
+            <label for="spot-a17" class="spot"><span class="spot__id">A17</span><span class="spot__status">Leaving</span></label>
+            <input type="checkbox" id="spot-a18" class="spot-toggle">
+            <label for="spot-a18" class="spot"><span class="spot__id">A18</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a19" class="spot-toggle">
+            <label for="spot-a19" class="spot"><span class="spot__id">A19</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-a20" class="spot-toggle">
+            <label for="spot-a20" class="spot"><span class="spot__id">A20</span><span class="spot__status">Open</span></label>
           </div>
         </div>
-
-        <div class="level-summary" aria-label="Level 1 summary">
-          <div class="level-summary__item">
-            <span class="level-summary__count count-green">14</span> Available
-          </div>
+        <section class="level-summary" aria-label="Level 1 summary">
+          <div class="level-summary__item"><span class="level-summary__count count-green">14</span> Available</div>
           <span class="level-summary__sep" aria-hidden="true">|</span>
-          <div class="level-summary__item">
-            <span class="level-summary__count count-red">4</span> Occupied
-          </div>
+          <div class="level-summary__item"><span class="level-summary__count count-red">4</span> Occupied</div>
           <span class="level-summary__sep" aria-hidden="true">|</span>
-          <div class="level-summary__item">
-            <span class="level-summary__count count-yellow">2</span> Leaving Soon
-          </div>
-        </div>
+          <div class="level-summary__item"><span class="level-summary__count count-yellow">2</span> Leaving Soon</div>
+        </section>
       </section>
 
-
-      <!-- ══════════════════════════════════════════════════════
-           LEVEL 2 
-      ═══════════════════════════════════════════════════════ -->
       <section class="level-card" id="level-2" aria-labelledby="level-2-title">
         <div class="level-card__header">
-          <h2 class="level-card__title" id="level-2-title">
-            Level 2 <span>— Second Floor</span>
-          </h2>
+          <h2 class="level-card__title" id="level-2-title">Level 2 <span>— Second Floor</span></h2>
           <div class="level-card__meta">
             <span class="badge badge-yellow">Limited</span>
             <span class="badge badge-gray">10 / 20 available</span>
           </div>
         </div>
-
         <div class="level-card__body">
           <div class="spot-grid" role="group" aria-label="Level 2 parking spots">
-
-            <!-- B01 available -->
-            <input type="checkbox" id="spot-b01" class="spot-toggle" />
-            <label for="spot-b01" class="spot">
-              <span class="spot__id">B01</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 2 · B01 · Click to toggle</span>
-            </label>
-
-            <!-- B02 occupied -->
-            <input type="checkbox" id="spot-b02" class="spot-toggle" checked />
-            <label for="spot-b02" class="spot">
-              <span class="spot__id">B02</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 2 · B02 · Click to toggle</span>
-            </label>
-
-            <!-- B03 available -->
-            <input type="checkbox" id="spot-b03" class="spot-toggle" />
-            <label for="spot-b03" class="spot">
-              <span class="spot__id">B03</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 2 · B03 · Click to toggle</span>
-            </label>
-
-            <!-- B04 leaving soon -->
-            <input type="checkbox" id="spot-b04" class="spot-toggle spot-toggle--leaving" />
-            <label for="spot-b04" class="spot">
-              <span class="spot__id">B04</span>
-              <span class="spot__status">Leaving</span>
-              <span class="spot__tip">Level 2 · B04 · Leaving Soon</span>
-            </label>
-
-            <!-- B05 occupied -->
-            <input type="checkbox" id="spot-b05" class="spot-toggle" checked />
-            <label for="spot-b05" class="spot">
-              <span class="spot__id">B05</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 2 · B05 · Click to toggle</span>
-            </label>
-
-            <!-- B06 available -->
-            <input type="checkbox" id="spot-b06" class="spot-toggle" />
-            <label for="spot-b06" class="spot">
-              <span class="spot__id">B06</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 2 · B06 · Click to toggle</span>
-            </label>
-
-            <!-- B07 occupied -->
-            <input type="checkbox" id="spot-b07" class="spot-toggle" checked />
-            <label for="spot-b07" class="spot">
-              <span class="spot__id">B07</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 2 · B07 · Click to toggle</span>
-            </label>
-
-            <!-- B08 available -->
-            <input type="checkbox" id="spot-b08" class="spot-toggle" />
-            <label for="spot-b08" class="spot">
-              <span class="spot__id">B08</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 2 · B08 · Click to toggle</span>
-            </label>
-
-            <!-- B09 occupied -->
-            <input type="checkbox" id="spot-b09" class="spot-toggle" checked />
-            <label for="spot-b09" class="spot">
-              <span class="spot__id">B09</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 2 · B09 · Click to toggle</span>
-            </label>
-
-            <!-- B10 available -->
-            <input type="checkbox" id="spot-b10" class="spot-toggle" />
-            <label for="spot-b10" class="spot">
-              <span class="spot__id">B10</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 2 · B10 · Click to toggle</span>
-            </label>
-
-            <!-- B11 leaving soon -->
-            <input type="checkbox" id="spot-b11" class="spot-toggle spot-toggle--leaving" />
-            <label for="spot-b11" class="spot">
-              <span class="spot__id">B11</span>
-              <span class="spot__status">Leaving</span>
-              <span class="spot__tip">Level 2 · B11 · Leaving Soon</span>
-            </label>
-
-            <!-- B12 occupied -->
-            <input type="checkbox" id="spot-b12" class="spot-toggle" checked />
-            <label for="spot-b12" class="spot">
-              <span class="spot__id">B12</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 2 · B12 · Click to toggle</span>
-            </label>
-
-            <!-- B13 available -->
-            <input type="checkbox" id="spot-b13" class="spot-toggle" />
-            <label for="spot-b13" class="spot">
-              <span class="spot__id">B13</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 2 · B13 · Click to toggle</span>
-            </label>
-
-            <!-- B14 occupied -->
-            <input type="checkbox" id="spot-b14" class="spot-toggle" checked />
-            <label for="spot-b14" class="spot">
-              <span class="spot__id">B14</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 2 · B14 · Click to toggle</span>
-            </label>
-
-            <!-- B15 available -->
-            <input type="checkbox" id="spot-b15" class="spot-toggle" />
-            <label for="spot-b15" class="spot">
-              <span class="spot__id">B15</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 2 · B15 · Click to toggle</span>
-            </label>
-
-            <!-- B16 occupied -->
-            <input type="checkbox" id="spot-b16" class="spot-toggle" checked />
-            <label for="spot-b16" class="spot">
-              <span class="spot__id">B16</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 2 · B16 · Click to toggle</span>
-            </label>
-
-            <!-- B17 available -->
-            <input type="checkbox" id="spot-b17" class="spot-toggle" />
-            <label for="spot-b17" class="spot">
-              <span class="spot__id">B17</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 2 · B17 · Click to toggle</span>
-            </label>
-
-            <!-- B18 available -->
-            <input type="checkbox" id="spot-b18" class="spot-toggle" />
-            <label for="spot-b18" class="spot">
-              <span class="spot__id">B18</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 2 · B18 · Click to toggle</span>
-            </label>
-
-            <!-- B19 occupied -->
-            <input type="checkbox" id="spot-b19" class="spot-toggle" checked />
-            <label for="spot-b19" class="spot">
-              <span class="spot__id">B19</span>
-              <span class="spot__status">Taken</span>
-              <span class="spot__tip">Level 2 · B19 · Click to toggle</span>
-            </label>
-
-            <!-- B20 available -->
-            <input type="checkbox" id="spot-b20" class="spot-toggle" />
-            <label for="spot-b20" class="spot">
-              <span class="spot__id">B20</span>
-              <span class="spot__status">Open</span>
-              <span class="spot__tip">Level 2 · B20 · Click to toggle</span>
-            </label>
-
+            <input type="checkbox" id="spot-b01" class="spot-toggle">
+            <label for="spot-b01" class="spot"><span class="spot__id">B01</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-b02" class="spot-toggle" checked>
+            <label for="spot-b02" class="spot"><span class="spot__id">B02</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-b03" class="spot-toggle">
+            <label for="spot-b03" class="spot"><span class="spot__id">B03</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-b04" class="spot-toggle spot-toggle--leaving">
+            <label for="spot-b04" class="spot"><span class="spot__id">B04</span><span class="spot__status">Leaving</span></label>
+            <input type="checkbox" id="spot-b05" class="spot-toggle" checked>
+            <label for="spot-b05" class="spot"><span class="spot__id">B05</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-b06" class="spot-toggle">
+            <label for="spot-b06" class="spot"><span class="spot__id">B06</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-b07" class="spot-toggle" checked>
+            <label for="spot-b07" class="spot"><span class="spot__id">B07</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-b08" class="spot-toggle">
+            <label for="spot-b08" class="spot"><span class="spot__id">B08</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-b09" class="spot-toggle" checked>
+            <label for="spot-b09" class="spot"><span class="spot__id">B09</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-b10" class="spot-toggle">
+            <label for="spot-b10" class="spot"><span class="spot__id">B10</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-b11" class="spot-toggle spot-toggle--leaving">
+            <label for="spot-b11" class="spot"><span class="spot__id">B11</span><span class="spot__status">Leaving</span></label>
+            <input type="checkbox" id="spot-b12" class="spot-toggle" checked>
+            <label for="spot-b12" class="spot"><span class="spot__id">B12</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-b13" class="spot-toggle">
+            <label for="spot-b13" class="spot"><span class="spot__id">B13</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-b14" class="spot-toggle" checked>
+            <label for="spot-b14" class="spot"><span class="spot__id">B14</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-b15" class="spot-toggle">
+            <label for="spot-b15" class="spot"><span class="spot__id">B15</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-b16" class="spot-toggle" checked>
+            <label for="spot-b16" class="spot"><span class="spot__id">B16</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-b17" class="spot-toggle">
+            <label for="spot-b17" class="spot"><span class="spot__id">B17</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-b18" class="spot-toggle">
+            <label for="spot-b18" class="spot"><span class="spot__id">B18</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-b19" class="spot-toggle" checked>
+            <label for="spot-b19" class="spot"><span class="spot__id">B19</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-b20" class="spot-toggle">
+            <label for="spot-b20" class="spot"><span class="spot__id">B20</span><span class="spot__status">Open</span></label>
           </div>
         </div>
-
-        <div class="level-summary" aria-label="Level 2 summary">
-          <div class="level-summary__item">
-            <span class="level-summary__count count-green">10</span> Available
-          </div>
+        <section class="level-summary" aria-label="Level 2 summary">
+          <div class="level-summary__item"><span class="level-summary__count count-green">10</span> Available</div>
           <span class="level-summary__sep" aria-hidden="true">|</span>
-          <div class="level-summary__item">
-            <span class="level-summary__count count-red">8</span> Occupied
-          </div>
+          <div class="level-summary__item"><span class="level-summary__count count-red">8</span> Occupied</div>
           <span class="level-summary__sep" aria-hidden="true">|</span>
-          <div class="level-summary__item">
-            <span class="level-summary__count count-yellow">2</span> Leaving Soon
-          </div>
-        </div>
+          <div class="level-summary__item"><span class="level-summary__count count-yellow">2</span> Leaving Soon</div>
+        </section>
       </section>
 
-
-      <!-- ══════════════════════════════════════════════════════
-           LEVEL 3 
-      ═══════════════════════════════════════════════════════ -->
       <section class="level-card" id="level-3" aria-labelledby="level-3-title">
         <div class="level-card__header">
-          <h2 class="level-card__title" id="level-3-title">
-            Level 3 <span>— Third Floor</span>
-          </h2>
+          <h2 class="level-card__title" id="level-3-title">Level 3 <span>— Third Floor</span></h2>
           <div class="level-card__meta">
             <span class="badge badge-green">Open</span>
             <span class="badge badge-gray">18 / 20 available</span>
           </div>
         </div>
-
         <div class="level-card__body">
           <div class="spot-grid" role="group" aria-label="Level 3 parking spots">
-
-            <input type="checkbox" id="spot-c01" class="spot-toggle" />
-            <label for="spot-c01" class="spot"><span class="spot__id">C01</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C01 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c02" class="spot-toggle" />
-            <label for="spot-c02" class="spot"><span class="spot__id">C02</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C02 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c03" class="spot-toggle" />
-            <label for="spot-c03" class="spot"><span class="spot__id">C03</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C03 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c04" class="spot-toggle" />
-            <label for="spot-c04" class="spot"><span class="spot__id">C04</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C04 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c05" class="spot-toggle" />
-            <label for="spot-c05" class="spot"><span class="spot__id">C05</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C05 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c06" class="spot-toggle" />
-            <label for="spot-c06" class="spot"><span class="spot__id">C06</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C06 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c07" class="spot-toggle" />
-            <label for="spot-c07" class="spot"><span class="spot__id">C07</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C07 · Click to toggle</span></label>
-
-            <!-- C08 occupied -->
-            <input type="checkbox" id="spot-c08" class="spot-toggle" checked />
-            <label for="spot-c08" class="spot"><span class="spot__id">C08</span><span class="spot__status">Taken</span><span class="spot__tip">Level 3 · C08 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c09" class="spot-toggle" />
-            <label for="spot-c09" class="spot"><span class="spot__id">C09</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C09 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c10" class="spot-toggle" />
-            <label for="spot-c10" class="spot"><span class="spot__id">C10</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C10 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c11" class="spot-toggle" />
-            <label for="spot-c11" class="spot"><span class="spot__id">C11</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C11 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c12" class="spot-toggle" />
-            <label for="spot-c12" class="spot"><span class="spot__id">C12</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C12 · Click to toggle</span></label>
-
-            <!-- C13 occupied -->
-            <input type="checkbox" id="spot-c13" class="spot-toggle" checked />
-            <label for="spot-c13" class="spot"><span class="spot__id">C13</span><span class="spot__status">Taken</span><span class="spot__tip">Level 3 · C13 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c14" class="spot-toggle" />
-            <label for="spot-c14" class="spot"><span class="spot__id">C14</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C14 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c15" class="spot-toggle" />
-            <label for="spot-c15" class="spot"><span class="spot__id">C15</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C15 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c16" class="spot-toggle" />
-            <label for="spot-c16" class="spot"><span class="spot__id">C16</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C16 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c17" class="spot-toggle" />
-            <label for="spot-c17" class="spot"><span class="spot__id">C17</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C17 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c18" class="spot-toggle" />
-            <label for="spot-c18" class="spot"><span class="spot__id">C18</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C18 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c19" class="spot-toggle" />
-            <label for="spot-c19" class="spot"><span class="spot__id">C19</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C19 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-c20" class="spot-toggle" />
-            <label for="spot-c20" class="spot"><span class="spot__id">C20</span><span class="spot__status">Open</span><span class="spot__tip">Level 3 · C20 · Click to toggle</span></label>
-
+            <input type="checkbox" id="spot-c01" class="spot-toggle">
+            <label for="spot-c01" class="spot"><span class="spot__id">C01</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c02" class="spot-toggle">
+            <label for="spot-c02" class="spot"><span class="spot__id">C02</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c03" class="spot-toggle">
+            <label for="spot-c03" class="spot"><span class="spot__id">C03</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c04" class="spot-toggle">
+            <label for="spot-c04" class="spot"><span class="spot__id">C04</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c05" class="spot-toggle">
+            <label for="spot-c05" class="spot"><span class="spot__id">C05</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c06" class="spot-toggle">
+            <label for="spot-c06" class="spot"><span class="spot__id">C06</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c07" class="spot-toggle">
+            <label for="spot-c07" class="spot"><span class="spot__id">C07</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c08" class="spot-toggle" checked>
+            <label for="spot-c08" class="spot"><span class="spot__id">C08</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-c09" class="spot-toggle">
+            <label for="spot-c09" class="spot"><span class="spot__id">C09</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c10" class="spot-toggle">
+            <label for="spot-c10" class="spot"><span class="spot__id">C10</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c11" class="spot-toggle">
+            <label for="spot-c11" class="spot"><span class="spot__id">C11</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c12" class="spot-toggle">
+            <label for="spot-c12" class="spot"><span class="spot__id">C12</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c13" class="spot-toggle" checked>
+            <label for="spot-c13" class="spot"><span class="spot__id">C13</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-c14" class="spot-toggle">
+            <label for="spot-c14" class="spot"><span class="spot__id">C14</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c15" class="spot-toggle">
+            <label for="spot-c15" class="spot"><span class="spot__id">C15</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c16" class="spot-toggle">
+            <label for="spot-c16" class="spot"><span class="spot__id">C16</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c17" class="spot-toggle">
+            <label for="spot-c17" class="spot"><span class="spot__id">C17</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c18" class="spot-toggle">
+            <label for="spot-c18" class="spot"><span class="spot__id">C18</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c19" class="spot-toggle">
+            <label for="spot-c19" class="spot"><span class="spot__id">C19</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-c20" class="spot-toggle">
+            <label for="spot-c20" class="spot"><span class="spot__id">C20</span><span class="spot__status">Open</span></label>
           </div>
         </div>
-
-        <div class="level-summary" aria-label="Level 3 summary">
-          <div class="level-summary__item">
-            <span class="level-summary__count count-green">18</span> Available
-          </div>
+        <section class="level-summary" aria-label="Level 3 summary">
+          <div class="level-summary__item"><span class="level-summary__count count-green">18</span> Available</div>
           <span class="level-summary__sep" aria-hidden="true">|</span>
-          <div class="level-summary__item">
-            <span class="level-summary__count count-red">2</span> Occupied
-          </div>
+          <div class="level-summary__item"><span class="level-summary__count count-red">2</span> Occupied</div>
           <span class="level-summary__sep" aria-hidden="true">|</span>
-          <div class="level-summary__item">
-            <span class="level-summary__count count-yellow">0</span> Leaving Soon
-          </div>
-        </div>
+          <div class="level-summary__item"><span class="level-summary__count count-yellow">0</span> Leaving Soon</div>
+        </section>
       </section>
 
-
-      <!-- ══════════════════════════════════════════════════════
-           LEVEL 4 
-      ═══════════════════════════════════════════════════════ -->
       <section class="level-card" id="level-4" aria-labelledby="level-4-title">
         <div class="level-card__header">
-          <h2 class="level-card__title" id="level-4-title">
-            Level 4 <span>— Fourth Floor</span>
-          </h2>
+          <h2 class="level-card__title" id="level-4-title">Level 4 <span>— Fourth Floor</span></h2>
           <div class="level-card__meta">
             <span class="badge badge-red">Nearly Full</span>
             <span class="badge badge-gray">4 / 20 available</span>
           </div>
         </div>
-
         <div class="level-card__body">
           <div class="spot-grid" role="group" aria-label="Level 4 parking spots">
-
-            <!-- D01 occupied -->
-            <input type="checkbox" id="spot-d01" class="spot-toggle" checked />
-            <label for="spot-d01" class="spot"><span class="spot__id">D01</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D01 · Click to toggle</span></label>
-
-            <!-- D02 occupied -->
-            <input type="checkbox" id="spot-d02" class="spot-toggle" checked />
-            <label for="spot-d02" class="spot"><span class="spot__id">D02</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D02 · Click to toggle</span></label>
-
-            <!-- D03 occupied -->
-            <input type="checkbox" id="spot-d03" class="spot-toggle" checked />
-            <label for="spot-d03" class="spot"><span class="spot__id">D03</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D03 · Click to toggle</span></label>
-
-            <!-- D04 occupied -->
-            <input type="checkbox" id="spot-d04" class="spot-toggle" checked />
-            <label for="spot-d04" class="spot"><span class="spot__id">D04</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D04 · Click to toggle</span></label>
-
-            <!-- D05 occupied -->
-            <input type="checkbox" id="spot-d05" class="spot-toggle" checked />
-            <label for="spot-d05" class="spot"><span class="spot__id">D05</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D05 · Click to toggle</span></label>
-
-            <!-- D06 leaving soon -->
-            <input type="checkbox" id="spot-d06" class="spot-toggle spot-toggle--leaving" />
-            <label for="spot-d06" class="spot"><span class="spot__id">D06</span><span class="spot__status">Leaving</span><span class="spot__tip">Level 4 · D06 · Leaving Soon</span></label>
-
-            <!-- D07 occupied -->
-            <input type="checkbox" id="spot-d07" class="spot-toggle" checked />
-            <label for="spot-d07" class="spot"><span class="spot__id">D07</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D07 · Click to toggle</span></label>
-
-            <!-- D08 occupied -->
-            <input type="checkbox" id="spot-d08" class="spot-toggle" checked />
-            <label for="spot-d08" class="spot"><span class="spot__id">D08</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D08 · Click to toggle</span></label>
-
-            <!-- D09 occupied -->
-            <input type="checkbox" id="spot-d09" class="spot-toggle" checked />
-            <label for="spot-d09" class="spot"><span class="spot__id">D09</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D09 · Click to toggle</span></label>
-
-            <!-- D10 occupied -->
-            <input type="checkbox" id="spot-d10" class="spot-toggle" checked />
-            <label for="spot-d10" class="spot"><span class="spot__id">D10</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D10 · Click to toggle</span></label>
-
-            <!-- D11 available -->
-            <input type="checkbox" id="spot-d11" class="spot-toggle" />
-            <label for="spot-d11" class="spot"><span class="spot__id">D11</span><span class="spot__status">Open</span><span class="spot__tip">Level 4 · D11 · Click to toggle</span></label>
-
-            <!-- D12 occupied -->
-            <input type="checkbox" id="spot-d12" class="spot-toggle" checked />
-            <label for="spot-d12" class="spot"><span class="spot__id">D12</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D12 · Click to toggle</span></label>
-
-            <!-- D13 occupied -->
-            <input type="checkbox" id="spot-d13" class="spot-toggle" checked />
-            <label for="spot-d13" class="spot"><span class="spot__id">D13</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D13 · Click to toggle</span></label>
-
-            <!-- D14 leaving soon -->
-            <input type="checkbox" id="spot-d14" class="spot-toggle spot-toggle--leaving" />
-            <label for="spot-d14" class="spot"><span class="spot__id">D14</span><span class="spot__status">Leaving</span><span class="spot__tip">Level 4 · D14 · Leaving Soon</span></label>
-
-            <!-- D15 occupied -->
-            <input type="checkbox" id="spot-d15" class="spot-toggle" checked />
-            <label for="spot-d15" class="spot"><span class="spot__id">D15</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D15 · Click to toggle</span></label>
-
-            <!-- D16 available -->
-            <input type="checkbox" id="spot-d16" class="spot-toggle" />
-            <label for="spot-d16" class="spot"><span class="spot__id">D16</span><span class="spot__status">Open</span><span class="spot__tip">Level 4 · D16 · Click to toggle</span></label>
-
-            <!-- D17 occupied -->
-            <input type="checkbox" id="spot-d17" class="spot-toggle" checked />
-            <label for="spot-d17" class="spot"><span class="spot__id">D17</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D17 · Click to toggle</span></label>
-
-            <!-- D18 available -->
-            <input type="checkbox" id="spot-d18" class="spot-toggle" />
-            <label for="spot-d18" class="spot"><span class="spot__id">D18</span><span class="spot__status">Open</span><span class="spot__tip">Level 4 · D18 · Click to toggle</span></label>
-
-            <!-- D19 occupied -->
-            <input type="checkbox" id="spot-d19" class="spot-toggle" checked />
-            <label for="spot-d19" class="spot"><span class="spot__id">D19</span><span class="spot__status">Taken</span><span class="spot__tip">Level 4 · D19 · Click to toggle</span></label>
-
-            <!-- D20 available -->
-            <input type="checkbox" id="spot-d20" class="spot-toggle" />
-            <label for="spot-d20" class="spot"><span class="spot__id">D20</span><span class="spot__status">Open</span><span class="spot__tip">Level 4 · D20 · Click to toggle</span></label>
-
+            <input type="checkbox" id="spot-d01" class="spot-toggle" checked>
+            <label for="spot-d01" class="spot"><span class="spot__id">D01</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d02" class="spot-toggle" checked>
+            <label for="spot-d02" class="spot"><span class="spot__id">D02</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d03" class="spot-toggle" checked>
+            <label for="spot-d03" class="spot"><span class="spot__id">D03</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d04" class="spot-toggle" checked>
+            <label for="spot-d04" class="spot"><span class="spot__id">D04</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d05" class="spot-toggle" checked>
+            <label for="spot-d05" class="spot"><span class="spot__id">D05</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d06" class="spot-toggle spot-toggle--leaving">
+            <label for="spot-d06" class="spot"><span class="spot__id">D06</span><span class="spot__status">Leaving</span></label>
+            <input type="checkbox" id="spot-d07" class="spot-toggle" checked>
+            <label for="spot-d07" class="spot"><span class="spot__id">D07</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d08" class="spot-toggle" checked>
+            <label for="spot-d08" class="spot"><span class="spot__id">D08</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d09" class="spot-toggle" checked>
+            <label for="spot-d09" class="spot"><span class="spot__id">D09</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d10" class="spot-toggle" checked>
+            <label for="spot-d10" class="spot"><span class="spot__id">D10</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d11" class="spot-toggle">
+            <label for="spot-d11" class="spot"><span class="spot__id">D11</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-d12" class="spot-toggle" checked>
+            <label for="spot-d12" class="spot"><span class="spot__id">D12</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d13" class="spot-toggle" checked>
+            <label for="spot-d13" class="spot"><span class="spot__id">D13</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d14" class="spot-toggle spot-toggle--leaving">
+            <label for="spot-d14" class="spot"><span class="spot__id">D14</span><span class="spot__status">Leaving</span></label>
+            <input type="checkbox" id="spot-d15" class="spot-toggle" checked>
+            <label for="spot-d15" class="spot"><span class="spot__id">D15</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d16" class="spot-toggle">
+            <label for="spot-d16" class="spot"><span class="spot__id">D16</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-d17" class="spot-toggle" checked>
+            <label for="spot-d17" class="spot"><span class="spot__id">D17</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d18" class="spot-toggle">
+            <label for="spot-d18" class="spot"><span class="spot__id">D18</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-d19" class="spot-toggle" checked>
+            <label for="spot-d19" class="spot"><span class="spot__id">D19</span><span class="spot__status">Taken</span></label>
+            <input type="checkbox" id="spot-d20" class="spot-toggle">
+            <label for="spot-d20" class="spot"><span class="spot__id">D20</span><span class="spot__status">Open</span></label>
           </div>
         </div>
-
-        <div class="level-summary" aria-label="Level 4 summary">
-          <div class="level-summary__item">
-            <span class="level-summary__count count-green">4</span> Available
-          </div>
+        <section class="level-summary" aria-label="Level 4 summary">
+          <div class="level-summary__item"><span class="level-summary__count count-green">4</span> Available</div>
           <span class="level-summary__sep" aria-hidden="true">|</span>
-          <div class="level-summary__item">
-            <span class="level-summary__count count-red">14</span> Occupied
-          </div>
+          <div class="level-summary__item"><span class="level-summary__count count-red">14</span> Occupied</div>
           <span class="level-summary__sep" aria-hidden="true">|</span>
-          <div class="level-summary__item">
-            <span class="level-summary__count count-yellow">2</span> Leaving Soon
-          </div>
-        </div>
+          <div class="level-summary__item"><span class="level-summary__count count-yellow">2</span> Leaving Soon</div>
+        </section>
       </section>
 
-
-          
-     <!-- ══════════════════════════════════════════════════════
-           LEVEL 5
-      ═══════════════════════════════════════════════════════ -->
       <section class="level-card" id="level-5" aria-labelledby="level-5-title">
         <div class="level-card__header">
-          <h2 class="level-card__title" id="level-5-title">
-            Level 5 <span>— Roof Level (Open Air)</span>
-          </h2>
+          <h2 class="level-card__title" id="level-5-title">Level 5 <span>— Roof Level</span></h2>
           <div class="level-card__meta">
             <span class="badge badge-green">Open</span>
             <span class="badge badge-gray">20 / 20 available</span>
           </div>
         </div>
-
         <div class="level-card__body">
           <div class="spot-grid" role="group" aria-label="Level 5 parking spots">
-
-            <input type="checkbox" id="spot-e01" class="spot-toggle" />
-            <label for="spot-e01" class="spot"><span class="spot__id">E01</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E01 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e02" class="spot-toggle" />
-            <label for="spot-e02" class="spot"><span class="spot__id">E02</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E02 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e03" class="spot-toggle" />
-            <label for="spot-e03" class="spot"><span class="spot__id">E03</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E03 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e04" class="spot-toggle" />
-            <label for="spot-e04" class="spot"><span class="spot__id">E04</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E04 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e05" class="spot-toggle" />
-            <label for="spot-e05" class="spot"><span class="spot__id">E05</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E05 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e06" class="spot-toggle" />
-            <label for="spot-e06" class="spot"><span class="spot__id">E06</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E06 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e07" class="spot-toggle" />
-            <label for="spot-e07" class="spot"><span class="spot__id">E07</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E07 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e08" class="spot-toggle" />
-            <label for="spot-e08" class="spot"><span class="spot__id">E08</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E08 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e09" class="spot-toggle" />
-            <label for="spot-e09" class="spot"><span class="spot__id">E09</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E09 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e10" class="spot-toggle" />
-            <label for="spot-e10" class="spot"><span class="spot__id">E10</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E10 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e11" class="spot-toggle" />
-            <label for="spot-e11" class="spot"><span class="spot__id">E11</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E11 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e12" class="spot-toggle" />
-            <label for="spot-e12" class="spot"><span class="spot__id">E12</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E12 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e13" class="spot-toggle" />
-            <label for="spot-e13" class="spot"><span class="spot__id">E13</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E13 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e14" class="spot-toggle" />
-            <label for="spot-e14" class="spot"><span class="spot__id">E14</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E14 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e15" class="spot-toggle" />
-            <label for="spot-e15" class="spot"><span class="spot__id">E15</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E15 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e16" class="spot-toggle" />
-            <label for="spot-e16" class="spot"><span class="spot__id">E16</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E16 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e17" class="spot-toggle" />
-            <label for="spot-e17" class="spot"><span class="spot__id">E17</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E17 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e18" class="spot-toggle" />
-            <label for="spot-e18" class="spot"><span class="spot__id">E18</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E18 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e19" class="spot-toggle" />
-            <label for="spot-e19" class="spot"><span class="spot__id">E19</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E19 · Click to toggle</span></label>
-
-            <input type="checkbox" id="spot-e20" class="spot-toggle" />
-            <label for="spot-e20" class="spot"><span class="spot__id">E20</span><span class="spot__status">Open</span><span class="spot__tip">Level 5 · E20 · Click to toggle</span></label>
-
+            <input type="checkbox" id="spot-e01" class="spot-toggle">
+            <label for="spot-e01" class="spot"><span class="spot__id">E01</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e02" class="spot-toggle">
+            <label for="spot-e02" class="spot"><span class="spot__id">E02</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e03" class="spot-toggle">
+            <label for="spot-e03" class="spot"><span class="spot__id">E03</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e04" class="spot-toggle">
+            <label for="spot-e04" class="spot"><span class="spot__id">E04</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e05" class="spot-toggle">
+            <label for="spot-e05" class="spot"><span class="spot__id">E05</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e06" class="spot-toggle">
+            <label for="spot-e06" class="spot"><span class="spot__id">E06</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e07" class="spot-toggle">
+            <label for="spot-e07" class="spot"><span class="spot__id">E07</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e08" class="spot-toggle">
+            <label for="spot-e08" class="spot"><span class="spot__id">E08</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e09" class="spot-toggle">
+            <label for="spot-e09" class="spot"><span class="spot__id">E09</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e10" class="spot-toggle">
+            <label for="spot-e10" class="spot"><span class="spot__id">E10</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e11" class="spot-toggle">
+            <label for="spot-e11" class="spot"><span class="spot__id">E11</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e12" class="spot-toggle">
+            <label for="spot-e12" class="spot"><span class="spot__id">E12</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e13" class="spot-toggle">
+            <label for="spot-e13" class="spot"><span class="spot__id">E13</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e14" class="spot-toggle">
+            <label for="spot-e14" class="spot"><span class="spot__id">E14</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e15" class="spot-toggle">
+            <label for="spot-e15" class="spot"><span class="spot__id">E15</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e16" class="spot-toggle">
+            <label for="spot-e16" class="spot"><span class="spot__id">E16</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e17" class="spot-toggle">
+            <label for="spot-e17" class="spot"><span class="spot__id">E17</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e18" class="spot-toggle">
+            <label for="spot-e18" class="spot"><span class="spot__id">E18</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e19" class="spot-toggle">
+            <label for="spot-e19" class="spot"><span class="spot__id">E19</span><span class="spot__status">Open</span></label>
+            <input type="checkbox" id="spot-e20" class="spot-toggle">
+            <label for="spot-e20" class="spot"><span class="spot__id">E20</span><span class="spot__status">Open</span></label>
           </div>
         </div>
-
-        <div class="level-summary" aria-label="Level 5 summary">
-          <div class="level-summary__item">
-            <span class="level-summary__count count-green">20</span> Available
-          </div>
+        <section class="level-summary" aria-label="Level 5 summary">
+          <div class="level-summary__item"><span class="level-summary__count count-green">20</span> Available</div>
           <span class="level-summary__sep" aria-hidden="true">|</span>
-          <div class="level-summary__item">
-            <span class="level-summary__count count-red">0</span> Occupied
-          </div>
+          <div class="level-summary__item"><span class="level-summary__count count-red">0</span> Occupied</div>
           <span class="level-summary__sep" aria-hidden="true">|</span>
-          <div class="level-summary__item">
-            <span class="level-summary__count count-yellow">0</span> Leaving Soon
-          </div>
-        </div>
+          <div class="level-summary__item"><span class="level-summary__count count-yellow">0</span> Leaving Soon</div>
+        </section>
       </section>
 
     </div>
   </main>
-
 
 </body>
 </html>
