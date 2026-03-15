@@ -55,6 +55,12 @@ img {
   max-width: 100%;
   display: block;
 }
+.hero__image {
+  width: 85%;
+  max-width: 500px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
 
 a {
   color: var(--color-primary);
@@ -464,7 +470,7 @@ ul, ol {
 
 .hero__visual {
   display: flex;
-  justify-content: center;
+  gap: 30px;
   align-items: center;
 }
 
