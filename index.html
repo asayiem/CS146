@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Babbio Parking Garage Simulator — find available spots across all 5 levels in real time." />
+  <title>Home | Babbio Parking Simulator</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__brand" aria-label="Babbio Parking Simulator Home">
+        <div class="navbar__brand-icon" aria-hidden="true">
+          <span>SIT</span>
+        </div>
+        <span class="navbar__brand-name">Group Project 146</span>
+      </a>
+      <ul class="navbar__links" role="list">
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+        <li><a href="simulation.html">Simulation</a></li>
+        <li><a href="alerts.html">Alerts</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+   
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <h1 class="hero__title" id="hero-title">
+            Find Your Spot.
+            <span>Skip the Search.</span>
+          </h1>
+          <p class="hero__description">
+            The Babbio Garage Simulator gives you a real-time view of parking availability
+            across all five levels. See open spots, track occupancy, and simulate vehicle
+            entries — all without circling the garage.
+          </p>
+          <div class="hero__actions">
+            <a href="simulation.html" class="btn btn-primary btn-lg">View Simulation</a>
+            <a href="alerts.html" class="btn btn-secondary btn-lg">Recent Alerts</a>
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero__garage-diagram">
+            <h3>Live Level Status</h3>
+            <div class="hero__level-bars">
+
+              <div class="hero__level-bar">
+                <span class="hero__level-label">Level 1</span>
+                <div class="hero__level-track">
+                  <div class="hero__level-fill fill-green" style="width:70%;">70%</div>
+                </div>
+              </div>
+
+              <div class="hero__level-bar">
+                <span class="hero__level-label">Level 2</span>
+                <div class="hero__level-track">
+                  <div class="hero__level-fill fill-yellow" style="width:50%;">50%</div>
+                </div>
+              </div>
+
+              <div class="hero__level-bar">
+                <span class="hero__level-label">Level 3</span>
+                <div class="hero__level-track">
+                  <div class="hero__level-fill fill-green" style="width:90%;">90%</div>
+                </div>
+              </div>
+
+              <div class="hero__level-bar">
+                <span class="hero__level-label">Level 4</span>
+                <div class="hero__level-track">
+                  <div class="hero__level-fill fill-red" style="width:20%;">20%</div>
+                </div>
+              </div>
+
+              <div class="hero__level-bar">
+                <span class="hero__level-label">Level 5</span>
+                <div class="hero__level-track">
+                  <div class="hero__level-fill fill-green" style="width:100%;">100%</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <div class="container">
+      <div class="summary-cards" aria-label="Garage summary statistics">
+
+        <article class="summary-card">
+          <div class="summary-card__icon" aria-hidden="true">🅿️</div>
+          <div>
+            <p class="summary-card__label">Available Spots</p>
+            <p class="summary-card__value">67 <span>/ 100 total</span></p>
+          </div>
+        </article>
+
+        <article class="summary-card">
+          <div class="summary-card__icon" aria-hidden="true">🏢</div>
+          <div>
+            <p class="summary-card__label">Garage Levels</p>
+            <p class="summary-card__value">5 <span>floors</span></p>
+          </div>
+        </article>
+
+        <article class="summary-card">
+          <div class="summary-card__icon" aria-hidden="true">🔄</div>
+          <div>
+            <p class="summary-card__label">Simulation Status</p>
+            <p class="summary-card__value" style="font-size:1.3rem;">Active</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+  
+    <section class="section" aria-labelledby="levels-title">
+      <div class="container">
+
+        <header class="section__header">
+          <span class="section__label">Garage Overview</span>
+          <h2 class="section__title" id="levels-title">Level-by-Level Status</h2>
+          <p class="section__subtitle">
+            A quick look at current availability across all five levels of the Babbio Garage.
+            Click "View Level" to jump directly to that floor in the simulation.
+          </p>
+        </header>
+
+        <div class="level-table-wrap">
+          <table class="level-table">
+            <thead>
+              <tr>
+                <th scope="col">Level</th>
+                <th scope="col">Total Spots</th>
+                <th scope="col">Available</th>
+                <th scope="col">Occupied</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="level-name">Level 1</td>
+                <td class="num">20</td>
+                <td class="num available-num">14</td>
+                <td class="num occupied-num">6</td>
+                <td><span class="badge badge-green">Open</span></td>
+                <td><a href="simulation.html#level-1" class="view-link">View Level →</a></td>
+              </tr>
+              <tr>
+                <td class="level-name">Level 2</td>
+                <td class="num">20</td>
+                <td class="num available-num">10</td>
+                <td class="num occupied-num">10</td>
+                <td><span class="badge badge-yellow">Limited</span></td>
+                <td><a href="simulation.html#level-2" class="view-link">View Level →</a></td>
+              </tr>
+              <tr>
+                <td class="level-name">Level 3</td>
+                <td class="num">20</td>
+                <td class="num available-num">18</td>
+                <td class="num occupied-num">2</td>
+                <td><span class="badge badge-green">Open</span></td>
+                <td><a href="simulation.html#level-3" class="view-link">View Level →</a></td>
+              </tr>
+              <tr>
+                <td class="level-name">Level 4</td>
+                <td class="num">20</td>
+                <td class="num available-num">5</td>
+                <td class="num occupied-num">15</td>
+                <td><span class="badge badge-red">Nearly Full</span></td>
+                <td><a href="simulation.html#level-4" class="view-link">View Level →</a></td>
+              </tr>
+              <tr>
+                <td class="level-name">Level 5 <span class="badge badge-gray" style="margin-left:0.4rem;font-size:0.65rem;">Roof</span></td>
+                <td class="num">20</td>
+                <td class="num available-num">20</td>
+                <td class="num occupied-num">0</td>
+                <td><span class="badge badge-green">Open</span></td>
+                <td><a href="simulation.html#level-5" class="view-link">View Level →</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+  
+    <section class="section section--tint" aria-labelledby="cta-title">
+      <div class="container" style="text-align:center; max-width:640px;">
+        <span class="section__label">Ready to explore?</span>
+        <h2 class="section__title" id="cta-title" style="font-size:2rem; margin-bottom:1rem;">
+          Open the Full Simulation
+        </h2>
+        <p style="color:var(--color-text-muted); margin-bottom:2rem; font-size:1rem;">
+          Click into individual spots, mark them occupied or available, and watch the
+          level summaries update
+        </p>
+        <a href="simulation.html" class="btn btn-primary btn-lg">Launch Simulation</a>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
