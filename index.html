@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Babbio Parking Garage Simulator — find available spots across all 5 levels in real time." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Babbio Parking Garage Simulator — find available spots across all 5 levels in real time.">
   <title>Home | Babbio Parking Simulator</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  
   <nav class="navbar" aria-label="Main navigation">
     <div class="navbar__inner">
       <a href="index.html" class="navbar__brand" aria-label="Babbio Parking Simulator Home">
@@ -20,7 +19,7 @@
         </div>
         <span class="navbar__brand-name">Group Project 146</span>
       </a>
-      <ul class="navbar__links" role="list">
+      <ul class="navbar__links">
         <li><a href="index.html" class="active" aria-current="page">Home</a></li>
         <li><a href="simulation.html">Simulation</a></li>
         <li><a href="alerts.html">Alerts</a></li>
@@ -30,7 +29,6 @@
 
   <main id="main-content">
 
-   
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__inner">
         <div class="hero__text">
@@ -50,9 +48,9 @@
         </div>
 
         <div class="hero__visual" aria-hidden="true">
-        <img src="babbiogarage.jpg" alt="Babbio Parking Garage" class="hero__image">
+          <img src="babbiogarage.jpg" alt="Babbio Parking Garage" class="hero__image">
           <div class="hero__garage-diagram">
-            <h3>Live Level Status</h3>
+            <h2>Live Level Status</h2>
             <div class="hero__level-bars">
 
               <div class="hero__level-bar">
@@ -96,38 +94,36 @@
       </div>
     </section>
 
-    
     <div class="container">
-      <div class="summary-cards" aria-label="Garage summary statistics">
+      <section class="summary-cards" aria-label="Garage summary statistics">
 
-        <article class="summary-card">
+        <div class="summary-card">
           <div class="summary-card__icon" aria-hidden="true">🅿️</div>
           <div>
             <p class="summary-card__label">Available Spots</p>
             <p class="summary-card__value">67 <span>/ 100 total</span></p>
           </div>
-        </article>
+        </div>
 
-        <article class="summary-card">
+        <div class="summary-card">
           <div class="summary-card__icon" aria-hidden="true">🏢</div>
           <div>
             <p class="summary-card__label">Garage Levels</p>
             <p class="summary-card__value">5 <span>floors</span></p>
           </div>
-        </article>
+        </div>
 
-        <article class="summary-card">
+        <div class="summary-card">
           <div class="summary-card__icon" aria-hidden="true">🔄</div>
           <div>
             <p class="summary-card__label">Simulation Status</p>
             <p class="summary-card__value" style="font-size:1.3rem;">Active</p>
           </div>
-        </article>
+        </div>
 
-      </div>
+      </section>
     </div>
 
-  
     <section class="section" aria-labelledby="levels-title">
       <div class="container">
 
@@ -200,7 +196,6 @@
       </div>
     </section>
 
-  
     <section class="section section--tint" aria-labelledby="cta-title">
       <div class="container" style="text-align:center; max-width:640px;">
         <span class="section__label">Ready to explore?</span>
