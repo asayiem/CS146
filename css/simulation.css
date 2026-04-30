@@ -1,0 +1,429 @@
+/* ============================================================
+   BABBIO PARKING SIMULATOR — Simulation Stylesheet
+   simulation.css | Group 2
+   ============================================================ */
+
+/* ============================================================
+   CONTROL BAR
+   ============================================================ */
+.control-bar {
+  background-color: var(--color-white);
+  border-bottom: 2px solid var(--color-border);
+  padding: 1rem 0;
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 50;
+  box-shadow: var(--shadow-sm);
+}
+
+.control-bar__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.control-bar__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+}
+
+.control-bar__stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.control-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.control-stat__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-green  { background-color: #28A745; }
+.dot-red    { background-color: var(--color-primary); }
+.dot-yellow { background-color: #E09A00; }
+
+.control-stat__num {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.control-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ============================================================
+   LEGEND
+   ============================================================ */
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.legend__item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.legend__swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.swatch-available { background-color: #28A745; }
+.swatch-occupied  { background-color: var(--color-primary); }
+.swatch-leaving   { background-color: #E09A00; }
+
+/* ============================================================
+   SIMULATION LAYOUT
+   ============================================================ */
+.sim-layout {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ============================================================
+   LEVEL SECTION CARD
+   ============================================================ */
+.level-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.level-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.5rem;
+  background-color: var(--color-bg-tint);
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.level-card__title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+}
+
+.level-card__title span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-left: 0.4rem;
+}
+
+.level-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.level-card__body {
+  padding: 1.5rem;
+}
+
+/* ============================================================
+   SPOT TOGGLE (CSS CHECKBOX HACK)
+   ============================================================ */
+
+/* Hide the real checkbox */
+.spot-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   SPOT GRID
+   ============================================================ */
+.spot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Base spot label ── */
+.spot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 58px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  border: 2px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  user-select: none;
+}
+
+.spot:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  z-index: 10;
+}
+
+.spot:active {
+  transform: scale(0.96);
+}
+
+/* ── Available (default, unchecked) ── */
+.spot-toggle + .spot {
+  background-color: #28A745;
+  border-color: #1E7E34;
+}
+
+/* ── Leaving Soon (unchecked leaving toggle) ── */
+.spot-toggle--leaving + .spot {
+  background-color: #E09A00;
+  border-color: #B07800;
+  color: var(--color-white);
+}
+
+/* ── Occupied (any toggle checked) ── */
+.spot-toggle:checked + .spot {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary-dark);
+}
+
+/* ── Spot ID text ── */
+.spot__id {
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.spot__status {
+  font-size: 0.62rem;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-top: 0.15rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Tooltip ── */
+.spot__tip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1A1A1A;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 0.35rem 0.65rem;
+  border-radius: 5px;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  z-index: 20;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.spot__tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1A1A1A;
+}
+
+.spot:hover .spot__tip,
+.spot:focus .spot__tip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ============================================================
+   LEVEL SUMMARY BAR
+   ============================================================ */
+.level-summary {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.85rem 1.5rem;
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.level-summary__item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.level-summary__count {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.count-green  { color: #1A7A3C; }
+.count-red    { color: var(--color-primary); }
+.count-yellow { color: #B07800; }
+
+.level-summary__sep {
+  color: var(--color-border);
+  font-size: 1.2rem;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (601px – 1023px)
+   ============================================================ */
+@media (max-width: 1023px) {
+  .sim-layout {
+    padding: 1.5rem 1.5rem 3rem;
+  }
+
+  .control-bar__inner {
+    padding: 0 1.5rem;
+  }
+
+  .spot-grid {
+    grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+  }
+
+  .spot {
+    height: 52px;
+  }
+
+  .control-bar__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .control-bar__stats {
+    gap: 1rem;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — PHONE (max-width: 600px)
+   ============================================================ */
+@media (max-width: 600px) {
+  .sim-layout {
+    padding: 1rem 1rem 3rem;
+    gap: 1.25rem;
+  }
+
+  .control-bar__inner {
+    padding: 0 1rem;
+  }
+
+  .spot-grid {
+    grid-template-columns: repeat(auto-fill, minmax(46px, 1fr));
+    gap: 0.45rem;
+  }
+
+  .spot {
+    height: 46px;
+  }
+
+  .spot__id {
+    font-size: 0.72rem;
+  }
+
+  .spot__status {
+    display: none;
+  }
+
+  .level-card__header {
+    padding: 0.85rem 1rem;
+  }
+
+  .level-card__body {
+    padding: 1rem;
+  }
+
+  .level-summary {
+    padding: 0.65rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .level-summary__sep {
+    display: none;
+  }
+
+  .control-bar__title {
+    font-size: 0.95rem;
+  }
+
+  .control-stat {
+    font-size: 0.78rem;
+  }
+
+  .legend {
+    gap: 0.75rem;
+  }
+
+  .legend__item {
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,501 @@
+/*
+  Abu Sayiem
+  Babbio Parking Simulator Alerts Stylesheet 
+*/
+
+/*
+   alerts page layout
+*/
+.alerts-layout {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  align-items: start;
+}
+
+/*
+   filter tabs
+*/
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0.35rem;
+  width: fit-content;
+}
+
+.filter-tab {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background-color var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.filter-tab:hover {
+  background-color: var(--color-bg-tint);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Default: "All" tab is visually active since all sections show by default */
+.filter-tab--all {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* When a specific target is active, All loses its highlight */
+body:has(:target) .filter-tab--all {
+  background-color: transparent;
+  color: var(--color-text-muted);
+}
+
+/* Highlight the matching tab when targeted */
+body:has(#filter-vacated:target) .filter-tab--vacated,
+body:has(#filter-occupied:target) .filter-tab--occupied {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Filter Sections */
+
+/* All sections visible by default */
+.alert-section {
+  display: block;
+}
+
+/* When any target is active, hide all sections */
+body:has(:target) .alert-section {
+  display: none;
+}
+
+/* Show only the targeted section */
+#filter-vacated:target,
+#filter-occupied:target {
+  display: block;
+}
+
+/* Section Heading */
+.alerts-section-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Alert Entry */
+.alert-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.alert-entry {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1.1rem;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.alert-entry:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateX(2px);
+}
+
+.alert-entry--new {
+  border-left: 3px solid var(--color-available);
+}
+
+.alert-entry_time {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  min-width: 72px;
+  font-variant-numeric: tabular-nums;
+}
+
+.alert-entry_spot {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  min-width: 52px;
+}
+
+.alert-entry_level {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  min-width: 64px;
+}
+
+.alert-entry_desc {
+  flex: 1;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+.alert-entry_badge {
+  flex-shrink: 0;
+}
+
+
+/* new spot card */
+.new-spot-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.9rem;
+  background-color: var(--color-bg-tint);
+  border: 1px solid #f0d0d0;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background-color var(--transition), box-shadow var(--transition);
+}
+
+.new-spot-card:hover {
+  background-color: #FFE8E8;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+}
+
+.new-spot-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.new-spot-card__id {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.new-spot-card__meta {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.new-spot-card__arrow {
+  font-size: 1rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+
+/* Status Summary Sidebar card  */
+.stats-list {
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.stats-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.stats-list__label {
+  font-weight: 500;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stats-list__label::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.stats-list__item--available .stats-list__label::before { background-color: #28A745; }
+.stats-list__item--occupied  .stats-list__label::before { background-color: var(--color-primary); }
+.stats-list__item--leaving   .stats-list__label::before { background-color: #E09A00; }
+.stats-list__item--total     .stats-list__label::before { background-color: var(--color-text); }
+
+.stats-list__value {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+/* responsive tablet (601px – 1023px) */
+@media (max-width: 1023px) {
+  .alerts-layout {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .sidebar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/*  responsive phone (max-width: 600px) */
+@media (max-width: 600px) {
+  .alerts-layout {
+    padding: 1.25rem 1rem 3rem;
+    gap: 1.5rem;
+  }
+
+  .filter-bar {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filter-tab {
+    flex: 1;
+    text-align: center;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.78rem;
+  }
+
+  .alert-entry {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .alert-entry_time {
+    min-width: unset;
+  }
+
+  .alert-entry_level {
+    min-width: unset;
+  }
+
+  .alert-entry_desc {
+    width: 100%;
+    flex: unset;
+  }
+
+  .sidebar {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*
+   JavaScript interaction additions
+   These styles support the updated form, active filter buttons,
+   validation messages, and dynamic alert entries.
+*/
+
+/* The updated filter controls are buttons instead of links so JavaScript can attach click listeners. */
+.filter-tab {
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.filter-tab.is-active,
+.filter-tab[aria-pressed="true"] {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* The old CSS-only :target filter is disabled because filtering is now handled with JavaScript. */
+body:has(:target) .alert-section {
+  display: block;
+}
+
+.alert-entry[hidden] {
+  display: none;
+}
+
+.alerts-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.alerts-heading-row .alerts-section-title {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.alert-count {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.alert-entry--urgent {
+  border-left: 3px solid #E09A00;
+  background-color: #FFF8E8;
+}
+
+.alert-form {
+  padding: 0.85rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-field label,
+.form-fieldset legend,
+.choice {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.form-field input[type="text"],
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.75rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-field input[type="text"]:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(194, 0, 0, 0.12);
+}
+
+.form-field small {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+.form-fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  gap: 0.55rem;
+  display: flex;
+  flex-direction: column;
+}
+.form-fieldset legend {
+  padding: 0 0.35rem;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.choice input {
+  accent-color: var(--color-primary);
+  width: auto;
+  flex-shrink: 0;
+}
+
+.choice--urgent {
+  background-color: var(--color-bg-tint);
+  border: 1px solid #f0d0d0;
+  border-radius: var(--radius);
+  padding: 0.65rem 0.75rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.button {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 800;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 0.65rem 0.9rem;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.button--secondary {
+  background-color: var(--color-white);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.form-status {
+  min-height: 1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #28A745;
+}
+
+.form-status.is-error {
+  color: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+  .alerts-heading-row,
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .alert-count {
+    white-space: normal;
+  }
+}

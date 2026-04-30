@@ -1,14 +1,18 @@
 <!-- Abu Sayiem -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Babbio Parking Garage alerts — recent spot activity, newly available spots, and a live event log.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Babbio Parking Garage alerts — recent spot activity, newly available spots, and a live event log." />
   <title>Alerts | Babbio Parking Simulator</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/alerts.css">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/alerts.css" />
+  <script src="js/alerts.js" defer></script>
 </head>
+
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -22,10 +26,11 @@
         </div>
         <span class="navbar__brand-name">Babbio Parking</span>
       </a>
-      <ul class="navbar__links">
+      <ul class="navbar__links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="simulation.html">Simulation</a></li>
         <li><a href="alerts.html" class="active" aria-current="page">Alerts</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
     </div>
   </nav>
@@ -34,13 +39,13 @@
   <header class="page-banner" aria-labelledby="page-title">
     <div class="page-banner__inner">
       <nav aria-label="Breadcrumb">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb" role="list">
           <li><a href="index.html">Home</a></li>
-          <li aria-hidden="true" class="breadcrumb__sep"></li>
-          
+          <li aria-hidden="true" class="breadcrumb__sep">›</li>
+          <li aria-current="page">Alerts</li>
         </ol>
       </nav>
-     
+      <p class="page-banner__label">Live Feed</p>
       <h1 class="page-banner__title" id="page-title">Alerts &amp; History</h1>
       <p class="page-banner__sub">Recent parking events across all 5 levels of the Babbio Garage.</p>
     </div>
@@ -54,18 +59,25 @@
 
         <!-- filter tab -->
         <nav class="filter-bar" aria-label="Filter alerts">
-          <a href="alerts.html" class="filter-tab filter-tab--all">All Events</a>
-          <a href="#filter-vacated" class="filter-tab filter-tab--vacated">Vacated</a>
-          <a href="#filter-occupied" class="filter-tab filter-tab--occupied">Occupied</a>
+          <button type="button" class="filter-tab is-active" data-filter="all" aria-pressed="true">All Events</button>
+          <button type="button" class="filter-tab filter-tab--vacated" data-filter="vacated"
+            aria-pressed="false">Vacated</button>
+          <button type="button" class="filter-tab filter-tab--occupied" data-filter="occupied"
+            aria-pressed="false">Occupied</button>
+          <button type="button" class="filter-tab filter-tab--leaving" data-filter="leaving"
+            aria-pressed="false">Leaving Soon</button>
         </nav>
 
         <!--  all events (visible by default)  -->
         <section class="alert-section" aria-label="All recent events">
-          <p class="alerts-section-title">All Recent Events — Most Recent First</p>
+          <div class="alerts-heading-row">
+            <p class="alerts-section-title" id="feedTitle">All Recent Events - Most Recent First</p>
+            <p class="alert-count" id="visibleCount" aria-live="polite">15 events shown</p>
+          </div>
 
-          <ol class="alert-feed" reversed>
+          <ol class="alert-feed" id="alertFeed" reversed>
 
-            <li class="alert-entry alert-entry--new">
+            <li class="alert-entry alert-entry--new" data-status="vacated">
               <span class="alert-entry_time">9:47 AM</span>
               <span class="alert-entry_spot">A03</span>
               <span class="alert-entry_level">Level 1</span>
@@ -73,7 +85,7 @@
               <span class="alert-entry_badge"><span class="badge badge-green">Vacated</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="vacated">
               <span class="alert-entry_time">9:44 AM</span>
               <span class="alert-entry_spot">D18</span>
               <span class="alert-entry_level">Level 4</span>
@@ -81,7 +93,7 @@
               <span class="alert-entry_badge"><span class="badge badge-green">Vacated</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="occupied">
               <span class="alert-entry_time">9:41 AM</span>
               <span class="alert-entry_spot">B07</span>
               <span class="alert-entry_level">Level 2</span>
@@ -89,7 +101,7 @@
               <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="occupied">
               <span class="alert-entry_time">9:39 AM</span>
               <span class="alert-entry_spot">C08</span>
               <span class="alert-entry_level">Level 3</span>
@@ -97,7 +109,7 @@
               <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="vacated">
               <span class="alert-entry_time">9:35 AM</span>
               <span class="alert-entry_spot">E05</span>
               <span class="alert-entry_level">Level 5</span>
@@ -105,7 +117,7 @@
               <span class="alert-entry_badge"><span class="badge badge-green">Vacated</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="leaving">
               <span class="alert-entry_time">9:32 AM</span>
               <span class="alert-entry_spot">D06</span>
               <span class="alert-entry_level">Level 4</span>
@@ -113,7 +125,7 @@
               <span class="alert-entry_badge"><span class="badge badge-yellow">Leaving Soon</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="occupied">
               <span class="alert-entry_time">9:28 AM</span>
               <span class="alert-entry_spot">A15</span>
               <span class="alert-entry_level">Level 1</span>
@@ -121,7 +133,7 @@
               <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="leaving">
               <span class="alert-entry_time">9:22 AM</span>
               <span class="alert-entry_spot">B11</span>
               <span class="alert-entry_level">Level 2</span>
@@ -129,7 +141,7 @@
               <span class="alert-entry_badge"><span class="badge badge-yellow">Leaving Soon</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="occupied">
               <span class="alert-entry_time">9:17 AM</span>
               <span class="alert-entry_spot">C13</span>
               <span class="alert-entry_level">Level 3</span>
@@ -137,7 +149,7 @@
               <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="vacated">
               <span class="alert-entry_time">9:14 AM</span>
               <span class="alert-entry_spot">D20</span>
               <span class="alert-entry_level">Level 4</span>
@@ -145,7 +157,7 @@
               <span class="alert-entry_badge"><span class="badge badge-green">Vacated</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="occupied">
               <span class="alert-entry_time">9:09 AM</span>
               <span class="alert-entry_spot">B19</span>
               <span class="alert-entry_level">Level 2</span>
@@ -153,7 +165,7 @@
               <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="leaving">
               <span class="alert-entry_time">9:03 AM</span>
               <span class="alert-entry_spot">A17</span>
               <span class="alert-entry_level">Level 1</span>
@@ -161,7 +173,7 @@
               <span class="alert-entry_badge"><span class="badge badge-yellow">Leaving Soon</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="vacated">
               <span class="alert-entry_time">8:58 AM</span>
               <span class="alert-entry_spot">E12</span>
               <span class="alert-entry_level">Level 5</span>
@@ -169,7 +181,7 @@
               <span class="alert-entry_badge"><span class="badge badge-green">Vacated</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="occupied">
               <span class="alert-entry_time">8:51 AM</span>
               <span class="alert-entry_spot">D09</span>
               <span class="alert-entry_level">Level 4</span>
@@ -177,7 +189,7 @@
               <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
             </li>
 
-            <li class="alert-entry">
+            <li class="alert-entry" data-status="leaving">
               <span class="alert-entry_time">8:45 AM</span>
               <span class="alert-entry_spot">B04</span>
               <span class="alert-entry_level">Level 2</span>
@@ -187,203 +199,182 @@
 
           </ol>
         </section>
+        </div>
 
-        <!-- vacated filter 
-             CSS :target: this section becomes visible when
-             the URL fragment is #filter-vacated
-         -->
-        <section id="filter-vacated" class="alert-section" aria-label="Vacated events only">
-          <p class="alerts-section-title">Vacated Events Only</p>
+        <!--  sidebar  -->
+        <aside class="sidebar" aria-label="Garage at a glance">
 
-          <ol class="alert-feed" reversed>
+          <!-- garage stats -->
+          <div class="sidebar__card">
+            <div class="sidebar__card-header">
+              <p class="sidebar__card-title">Garage Totals</p>
+            </div>
+            <dl class="stats-list">
+              <div class="stats-list__item stats-list__item--available">
+                <dt class="stats-list__label">Available</dt>
+                <dd class="stats-list__value" id="availableTotal">67</dd>
+              </div>
+              <div class="stats-list__item stats-list__item--occupied">
+                <dt class="stats-list__label">Occupied</dt>
+                <dd class="stats-list__value" id="occupiedTotal">28</dd>
+              </div>
+              <div class="stats-list__item stats-list__item--leaving">
+                <dt class="stats-list__label">Leaving Soon</dt>
+                <dd class="stats-list__value" id="leavingTotal">6</dd>
+              </div>
+              <div class="stats-list__item stats-list__item--total">
+                <dt class="stats-list__label">Total Spots</dt>
+                <dd class="stats-list__value" id="spotTotal">100</dd>
+              </div>
+            </dl>
+          </div>
 
-            <li class="alert-entry alert-entry--new">
-              <span class="alert-entry_time">9:47 AM</span>
-              <span class="alert-entry_spot">A03</span>
-              <span class="alert-entry_level">Level 1</span>
-              <span class="alert-entry_desc">Spot vacated — vehicle departed</span>
-              <span class="alert-entry_badge"><span class="badge badge-green">Vacated</span></span>
-            </li>
+          <!-- user interaction form -->
+          <div class="sidebar__card">
+            <div class="sidebar__card-header">
+              <p class="sidebar__card-title">Submit New Alert</p>
+            </div>
+            <form class="alert-form" id="alertForm" novalidate>
+              <div class="form-field">
+                <label for="spotId">Spot ID</label>
+                <input type="text" id="spotId" name="spotId" placeholder="Example: A03" maxlength="3"
+                  pattern="[A-E][0-9]{2}" required />
+                <small> Use one letter A-E and two digits.</small>
+              </div>
 
-            <li class="alert-entry">
-              <span class="alert-entry_time">9:44 AM</span>
-              <span class="alert-entry_spot">D18</span>
-              <span class="alert-entry_level">Level 4</span>
-              <span class="alert-entry_desc">Spot vacated — short-term tag scan cleared</span>
-              <span class="alert-entry_badge"><span class="badge badge-green">Vacated</span></span>
-            </li>
+              <div class="form-field">
+                <label for="garageLevel">Garage Level</label>
+                <select id="garageLevel" name="garageLevel" required>
+                  <option value="">Choose a level</option>
+                  <option value="Level 1">Level 1 - A spots</option>
+                  <option value="Level 2">Level 2 - B spots</option>
+                  <option value="Level 3">Level 3 - C spots</option>
+                  <option value="Level 4">Level 4 - D spots</option>
+                  <option value="Level 5">Level 5 - E spots</option>
+                </select>
+              </div>
+              <fieldset class="form-field form-fieldset">
+                <legend>Alert Type</legend>
+                <label class="choice">
+                  <input type="radio" name="eventType" value="vacated" required />
+                  Vacated
+                </label>
+                <label class="choice">
+                  <input type="radio" name="eventType" value="occupied" />
+                  Occupied
+                </label>
+                <label class="choice">
+                  <input type="radio" name="eventType" value="leaving" />
+                  Leaving Soon
+                </label>
+              </fieldset>
 
-            <li class="alert-entry">
-              <span class="alert-entry_time">9:35 AM</span>
-              <span class="alert-entry_spot">E05</span>
-              <span class="alert-entry_level">Level 5</span>
-              <span class="alert-entry_desc">Spot vacated — vehicle departed roof level</span>
-              <span class="alert-entry_badge"><span class="badge badge-green">Vacated</span></span>
-            </li>
+              <div class="form-field">
+                <label for="alertNotes">Notes</label>
+                <textarea id="alertNotes" name="alertNotes" rows="3" maxlength="120"
+                  placeholder="Optional short note for the live feed"></textarea>
+              </div>
 
-            <li class="alert-entry">
-              <span class="alert-entry_time">9:14 AM</span>
-              <span class="alert-entry_spot">D20</span>
-              <span class="alert-entry_level">Level 4</span>
-              <span class="alert-entry_desc">Spot vacated — vehicle departed</span>
-              <span class="alert-entry_badge"><span class="badge badge-green">Vacated</span></span>
-            </li>
+              <label class="choice choice--urgent">
+                <input type="checkbox" id="urgentFlag" name="urgentFlag" />
+                Mark as urgent
+              </label>
 
-            <li class="alert-entry">
-              <span class="alert-entry_time">8:58 AM</span>
-              <span class="alert-entry_spot">E12</span>
-              <span class="alert-entry_level">Level 5</span>
-              <span class="alert-entry_desc">Spot vacated — vehicle departed roof level</span>
-              <span class="alert-entry_badge"><span class="badge badge-green">Vacated</span></span>
-            </li>
+              <div class="form-actions">
+                <button type="submit" class="button button--primary">Add Alert</button>
+                <button type="reset" class="button button--secondary">Reset</button>
+              </div>
 
-          </ol>
-        </section>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
 
-        <!--  occupied filter 
-             CSS :target: this section becomes visible when
-             the URL fragment is #filter-occupied
-        -->
-        <section id="filter-occupied" class="alert-section" aria-label="Occupied events only">
-          <p class="alerts-section-title">Occupied Events Only</p>
+          <!-- quick nav to levels -->
+          <div class="sidebar__card">
+            <div class="sidebar__card-header">
+              <p class="sidebar__card-title">Jump to Level</p>
+            </div>
+            <div class="sidebar__card-body">
 
-          <ol class="alert-feed" reversed>
+              <a href="simulation.html#level-1" class="new-spot-card">
+                <div class="new-spot-card__info">
+                  <span class="new-spot-card__id">Level 1</span>
+                  <span class="new-spot-card__meta">14 available · Ground floor</span>
+                </div>
+                <span class="new-spot-card__arrow">→</span>
+              </a>
 
-            <li class="alert-entry">
-              <span class="alert-entry_time">9:41 AM</span>
-              <span class="alert-entry_spot">B07</span>
-              <span class="alert-entry_level">Level 2</span>
-              <span class="alert-entry_desc">Spot occupied — vehicle entered</span>
-              <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
-            </li>
+              <a href="simulation.html#level-2" class="new-spot-card">
+                <div class="new-spot-card__info">
+                  <span class="new-spot-card__id">Level 2</span>
+                  <span class="new-spot-card__meta">10 available · Limited</span>
+                </div>
+                <span class="new-spot-card__arrow">→</span>
+              </a>
 
-            <li class="alert-entry">
-              <span class="alert-entry_time">9:39 AM</span>
-              <span class="alert-entry_spot">C08</span>
-              <span class="alert-entry_level">Level 3</span>
-              <span class="alert-entry_desc">Spot occupied — vehicle entered</span>
-              <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
-            </li>
+              <a href="simulation.html#level-3" class="new-spot-card">
+                <div class="new-spot-card__info">
+                  <span class="new-spot-card__id">Level 3</span>
+                  <span class="new-spot-card__meta">18 available · Wide open</span>
+                </div>
+                <span class="new-spot-card__arrow">→</span>
+              </a>
 
-            <li class="alert-entry">
-              <span class="alert-entry_time">9:28 AM</span>
-              <span class="alert-entry_spot">A15</span>
-              <span class="alert-entry_level">Level 1</span>
-              <span class="alert-entry_desc">Spot occupied — vehicle entered</span>
-              <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
-            </li>
+              <a href="simulation.html#level-4" class="new-spot-card">
+                <div class="new-spot-card__info">
+                  <span class="new-spot-card__id">Level 4</span>
+                  <span class="new-spot-card__meta">4 available · Nearly full</span>
+                </div>
+                <span class="new-spot-card__arrow">→</span>
+              </a>
 
-            <li class="alert-entry">
-              <span class="alert-entry_time">9:17 AM</span>
-              <span class="alert-entry_spot">C13</span>
-              <span class="alert-entry_level">Level 3</span>
-              <span class="alert-entry_desc">Spot occupied — vehicle entered</span>
-              <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
-            </li>
+              <a href="simulation.html#level-5" class="new-spot-card">
+                <div class="new-spot-card__info">
+                  <span class="new-spot-card__id">Level 5</span>
+                  <span class="new-spot-card__meta">20 available · Roof level</span>
+                </div>
+                <span class="new-spot-card__arrow">→</span>
+              </a>
 
-            <li class="alert-entry">
-              <span class="alert-entry_time">9:09 AM</span>
-              <span class="alert-entry_spot">B19</span>
-              <span class="alert-entry_level">Level 2</span>
-              <span class="alert-entry_desc">Spot occupied — vehicle entered</span>
-              <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
-            </li>
+            </div>
+          </div>
 
-            <li class="alert-entry">
-              <span class="alert-entry_time">8:51 AM</span>
-              <span class="alert-entry_spot">D09</span>
-              <span class="alert-entry_level">Level 4</span>
-              <span class="alert-entry_desc">Spot occupied — vehicle entered</span>
-              <span class="alert-entry_badge"><span class="badge badge-red">Occupied</span></span>
-            </li>
-
-          </ol>
-        </section>
+        </aside>
 
       </div>
-
-      <!--  sidebar  -->
-      <aside class="sidebar" aria-label="Garage at a glance">
-
-        <!-- garage stats -->
-        <div class="sidebar__card">
-          <div class="sidebar__card-header">
-            <p class="sidebar__card-title">Garage Totals</p>
-          </div>
-          <dl class="stats-list">
-            <div class="stats-list__item stats-list__item--available">
-              <dt class="stats-list__label">Available</dt>
-              <dd class="stats-list__value">67</dd>
-            </div>
-            <div class="stats-list__item stats-list__item--occupied">
-              <dt class="stats-list__label">Occupied</dt>
-              <dd class="stats-list__value">28</dd>
-            </div>
-            <div class="stats-list__item stats-list__item--leaving">
-              <dt class="stats-list__label">Leaving Soon</dt>
-              <dd class="stats-list__value">6</dd>
-            </div>
-            <div class="stats-list__item stats-list__item--total">
-              <dt class="stats-list__label">Total Spots</dt>
-              <dd class="stats-list__value">100</dd>
-            </div>
-          </dl>
-        </div>
-
-        <!-- quick nav to levels -->
-        <div class="sidebar__card">
-          <div class="sidebar__card-header">
-            <p class="sidebar__card-title">Jump to Level</p>
-          </div>
-          <div class="sidebar__card-body">
-
-            <a href="simulation.html#level-1" class="new-spot-card">
-              <div class="new-spot-card__info">
-                <span class="new-spot-card__id">Level 1</span>
-                <span class="new-spot-card__meta">14 available · Ground floor</span>
-              </div>
-              <span class="new-spot-card__arrow">→</span>
-            </a>
-
-            <a href="simulation.html#level-2" class="new-spot-card">
-              <div class="new-spot-card__info">
-                <span class="new-spot-card__id">Level 2</span>
-                <span class="new-spot-card__meta">10 available · Limited</span>
-              </div>
-              <span class="new-spot-card__arrow">→</span>
-            </a>
-
-            <a href="simulation.html#level-3" class="new-spot-card">
-              <div class="new-spot-card__info">
-                <span class="new-spot-card__id">Level 3</span>
-                <span class="new-spot-card__meta">18 available · Wide open</span>
-              </div>
-              <span class="new-spot-card__arrow">→</span>
-            </a>
-
-            <a href="simulation.html#level-4" class="new-spot-card">
-              <div class="new-spot-card__info">
-                <span class="new-spot-card__id">Level 4</span>
-                <span class="new-spot-card__meta">4 available · Nearly full</span>
-              </div>
-              <span class="new-spot-card__arrow">→</span>
-            </a>
-
-            <a href="simulation.html#level-5" class="new-spot-card">
-              <div class="new-spot-card__info">
-                <span class="new-spot-card__id">Level 5</span>
-                <span class="new-spot-card__meta">20 available · Roof level</span>
-              </div>
-              <span class="new-spot-card__arrow">→</span>
-            </a>
-
-          </div>
-        </div>
-
-      </aside>
-
-    </div>
   </main>
+<!-- footer -->
+    <footer class="footer" aria-label="Site footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__brand-name">Babbio Parking Simulator</p>
+        <p class="footer__brand-desc">
+          A parking availability simulation for the Babbio Center Garage at
+          Stevens Institute of Technology.
+        </p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <p class="footer__heading">Pages</p>
+        <ul class="footer__links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="simulation.html">Simulation</a></li>
+          <li><a href="alerts.html">Alerts</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="footer__info">
+        <p class="footer__heading">Project Info</p>
+        <p><strong>Course:</strong> Web Programming I</p>
+        <p><strong>Team:</strong> Group 2</p>
+        <p><strong>Semester:</strong> Spring 2025</p>
+        <p><strong>School:</strong> Stevens Institute of Technology</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>Group 2 — Babbio Parking Simulator</span>
+      <span>Web Programming I · Spring 2025 · Stevens Institute of Technology</span>
+    </div>
+  </footer>
 
 </body>
 </html>
